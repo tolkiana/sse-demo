@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.server.router
 
 @Configuration
 class Route(private val handler: Handler) {
-    
+
     @Bean("routes")
     fun routes(): RouterFunction<ServerResponse> =
         router {
