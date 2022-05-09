@@ -1,0 +1,29 @@
+services:
+  serviceA:
+    image: openjdk:17
+    volumes:
+      - ./serviceA/build/libs/:/app
+    command: bash -c "cd /app && java -jar serviceA-0.0.1-SNAPSHOT.jar"
+    ports:
+      - 8080:8080
+  serviceB:
+    image: openjdk:17
+    volumes:
+      - ./serviceB/build/libs/:/app
+    command: bash -c "cd /app && java -jar serviceB-0.0.1-SNAPSHOT.jar"
+    ports:
+      - 8081:8081
+  mongodb:
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongodb_data_container:/data/db
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=tolkiana
+      - MONGO_INITDB_ROOT_PASSWORD=sse-demo
+      - MONGO_INITDB_DATABASE=demo
+
+volumes:
+  mongodb_data_container:
