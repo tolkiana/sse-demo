@@ -17,7 +17,7 @@ services:
     image: mongo:latest
     restart: always
     volumes:
-      - ./scripts/users.js:/docker-entrypoint-initdb.d/001_users.js:ro
+      - ./scripts/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
       - mongodb:/data/db
       - mongodb_config:/data/configdb
     ports:
