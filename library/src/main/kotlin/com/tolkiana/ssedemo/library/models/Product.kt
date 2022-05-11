@@ -1,9 +1,9 @@
-package com.tolkiana.ssdemo.serviceB.models
+package com.tolkiana.ssedemo.library.models
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import java.time.Instant
-import java.util.UUID
+import java.util.*
 
 @Document("products")
 data class Product(

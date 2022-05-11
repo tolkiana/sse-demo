@@ -1,4 +1,4 @@
-package com.tolkiana.ssdemo.serviceB
+package com.tolkiana.ssedemo.serviceB
 
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.server.ServerRequest

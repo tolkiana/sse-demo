@@ -1,4 +1,4 @@
-package com.tolkiana.ssedemo.serviceA.models
+package com.tolkiana.ssedemo.library.models
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document

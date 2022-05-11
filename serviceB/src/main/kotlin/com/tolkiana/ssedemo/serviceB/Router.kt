@@ -1,4 +1,4 @@
-package com.tolkiana.ssdemo.serviceB
+package com.tolkiana.ssedemo.serviceB
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

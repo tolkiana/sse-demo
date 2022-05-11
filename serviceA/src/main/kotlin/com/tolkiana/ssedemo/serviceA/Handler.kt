@@ -1,8 +1,9 @@
 package com.tolkiana.ssedemo.serviceA
 
-import com.tolkiana.ssedemo.serviceA.models.EventDTO
-import com.tolkiana.ssedemo.serviceA.models.toDTO
-import com.tolkiana.ssedemo.serviceA.models.toEvent
+import com.tolkiana.ssedemo.library.EventService
+import com.tolkiana.ssedemo.library.models.EventDTO
+import com.tolkiana.ssedemo.library.models.toDTO
+import com.tolkiana.ssedemo.library.models.toEvent
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.server.ServerRequest
 import org.springframework.web.reactive.function.server.ServerResponse

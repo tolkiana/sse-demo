@@ -1,4 +1,4 @@
-package com.tolkiana.ssedemo.serviceA
+package com.tolkiana.ssedemo.library
 
 import com.mongodb.reactivestreams.client.MongoClients
 import org.springframework.context.annotation.Bean

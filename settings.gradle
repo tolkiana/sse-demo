@@ -1,6 +1,0 @@
-rootProject.name = "sse-demo"
-
-include "library"
-include "serviceA"
-include "serviceB"
-

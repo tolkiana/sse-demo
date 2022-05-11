@@ -1,4 +1,4 @@
-package com.tolkiana.ssedemo.serviceA.models
+package com.tolkiana.ssedemo.library.models
 
 import com.fasterxml.jackson.annotation.JsonInclude
 
