@@ -9,9 +9,6 @@ import reactor.kotlin.core.publisher.toMono
 @Component
 class Handler(private val eventListener: EventListener) {
 
-    fun getEvents(request: ServerRequest): Mono<ServerResponse> =
-        ServerResponse.ok().json().bodyValue("Getting all events")
-
     fun subscribe(request: ServerRequest): Mono<ServerResponse> =
         request.toMono().map {
             eventListener.subscribe()
