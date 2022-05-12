@@ -13,5 +13,6 @@ class Route(private val handler: Handler) {
     fun routes(): RouterFunction<ServerResponse> =
         router {
             GET("events", handler::getEvents)
+            GET("events/stream", handler::subscribe)
         }
 }
