@@ -11,17 +11,10 @@ import java.util.function.Function
 class EventListener(private val template: ReactiveMongoTemplate) {
 
     fun subscribe(): Flux<Event> {
-//        return template
-//            .changeStream(Event::class.java)
-//            .watchCollection("events")
-//            .listen()
-//            .map {
-//                println("----Listing message---")
-//                println(it.body)
-//                it.body
-//            }
-        return Flux.interval(Duration.ofSeconds(5)).map {
-            Event( inStage = "TEST", outStage = "TEST", info = "details", productId = "124")
-        }
+        return template
+            .changeStream(Event::class.java)
+            .watchCollection("events")
+            .listen()
+            .map { it.body }
     }
 }
