@@ -1,32 +1,31 @@
-services:
-#  serviceA:
-#    image: openjdk:17
-#    volumes:
-#      - ./serviceA/build/libs/:/app
-#    command: bash -c "cd /app && java -jar serviceA-0.0.1-SNAPSHOT.jar"
-#    ports:
-#      - 8080:8080
-#  serviceB:
-#    image: openjdk:17
-#    volumes:
-#      - ./serviceB/build/libs/:/app
-#    command: bash -c "cd /app && java -jar serviceB-0.0.1-SNAPSHOT.jar"
-#    ports:
-#      - 8081:8081
-  mongodb:
-    image: mongo:latest
-    restart: always
-    volumes:
-      - ./scripts/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
-      - mongodb:/data/db
-      - mongodb_config:/data/configdb
-    ports:
-      - 27017:27017
-    environment:
-      MONGO_INITDB_DATABASE: demo
-      MONGO_INITDB_ROOT_PASSWORD: password
-      MONGO_INITDB_ROOT_USERNAME: admin
+version: "3.8"
 
-volumes:
-  mongodb:
-  mongodb_config:
+services:
+  mongo1:
+    image: mongo:4.2
+    container_name: mongo1
+    volumes:
+      - ~/mongors/data1:/data/db
+    ports:
+      - 27021:27021
+    command: [ "--bind_ip_all", "--replSet", "dbrs", "--port", "27021" ]
+    healthcheck:
+      test: test $$(echo "rs.initiate({_id:'dbrs',members:[{_id:0,host:\"mongo1:27021\"},{_id:1,host:\"mongo2:27022\"},{_id:2,host:\"mongo3:27023\"}]}).ok || rs.status().ok" | mongo --port 27021 --quiet) -eq 1
+      interval: 10s
+      start_period: 30s
+  mongo2:
+    image: mongo:4.2
+    container_name: mongo2
+    volumes:
+      - ~/mongors/data2:/data/db
+    ports:
+      - 27022:27022
+    command: [ "--bind_ip_all", "--replSet", "dbrs", "--port", "27022" ]
+  mongo3:
+    image: mongo:4.2
+    container_name: mongo3
+    volumes:
+      - ~/mongors/data3:/data/db
+    ports:
+      - 27023:27023
+    command: [ "--bind_ip_all", "--replSet", "dbrs", "--port", "27023" ]

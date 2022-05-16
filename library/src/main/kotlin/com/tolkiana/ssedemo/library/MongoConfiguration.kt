@@ -16,7 +16,7 @@ class MongoConfiguration: AbstractReactiveMongoConfiguration() {
     override fun reactiveMongoClient() = mongoClient()
 
     @Bean
-    fun mongoClient() = MongoClients.create("mongodb://admin:password@localhost:27017/")
+    fun mongoClient() = MongoClients.create("mongodb://mongo1:27021,mongo2:27022,mongo3:27023/?replicaSet=dbrs")
 
     @Bean
     override fun reactiveMongoTemplate(
