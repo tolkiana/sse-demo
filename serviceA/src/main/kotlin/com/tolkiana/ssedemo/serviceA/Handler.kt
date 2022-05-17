@@ -16,13 +16,9 @@ import reactor.core.publisher.Mono
 class Handler(private val service: EventService) {
 
     fun createEvent(request: ServerRequest): Mono<ServerResponse> =
-        request.bodyToMono<EventDTO>().map {
-            it.toEvent()
-        }.flatMap {
-            service.addEvent(it)
-        }.map {
-            it.toDTO()
-        }.flatMap {
-            ok().json().bodyValue(it)
-        }
+        request.bodyToMono<EventDTO>()
+            .map { it.toEvent() }
+            .flatMap { service.addEvent(it) }
+            .map { it.toDTO() }
+            .flatMap { ok().json().bodyValue(it) }
 }

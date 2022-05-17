@@ -10,9 +10,7 @@ import reactor.kotlin.core.publisher.toMono
 class Handler(private val eventListener: EventListener) {
 
     fun subscribe(request: ServerRequest): Mono<ServerResponse> =
-        request.toMono().map {
-            eventListener.subscribe()
-        }.flatMap {
-            ServerResponse.ok().sse().body(it)
-        }
+        request.toMono()
+            .map { eventListener.subscribe() }
+            .flatMap { ServerResponse.ok().sse().body(it) }
 }
