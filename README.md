@@ -11,7 +11,7 @@ The demo includes two independent services:
 
 Change Streams is only supported by replica sets so this demo also includes a docker compose file to spin up a replica set that can be used for this example.
 
-![](SSE-Demo.jpeg)
+![](images/SSE-Demo.jpeg)
 
 ## Getting started
 
@@ -55,3 +55,5 @@ curl --request POST 'http://localhost:8080/events' \
     "info": "String"
 }'
 ```
+
+![](images/sse.gif)
